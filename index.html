@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Energias</title>
+    <style>
+        body {
+            font-family:Arial;
+            margin: 255;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            max-width: 600px;
+            width: 100%;
+            padding: 20px;
+            border: 3px solid #881985;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .form-group button {
+            padding: 10px 15px;
+            background-color: #D000FF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .results {
+            margin-top: 20px;
+        }
+        .hidden {
+            display: none;
+        }
+      .top-right-image {
+            position: absolute;
+            top: 0px;
+            right: 270px;
+            width: 120px;
+            height: 220px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Calculando energias <3 </h1>
+           <img src="coelho.png" alt="Imagem" class="top-right-image">
+        <div class="form-group">
+            <label for="energyType">Escolha o tipo de energia que você quer calcular:</label>
+            <select id="energyType" onchange="showFields()">
+                <option value="">Bota...</option>
+                <option value="kinetic">Energia Cinética</option>
+                <option value="potentialGravitational">Energia Potencial Gravitacional</option>
+                <option value="potentialElastic">Energia Potencial Elástica</option>
+            </select>
+        </div>
+        <div id="kineticFields" class="hidden">
+            <div class="form-group">
+                <label for="mass">Massa (kg):</label>
+                <input type="number" id="mass">
+            </div>
+            <div class="form-group">
+                <label for="velocity">Velocidade (m/s):</label>
+                <input type="number" id="velocity">
+            </div>
+        </div>
+        <div id="potentialGravitationalFields" class="hidden">
+            <div class="form-group">
+                <label for="massGravity">Massa (kg):</label>
+                <input type="number" id="massGravity">
+            </div>
+            <div class="form-group">
+                <label for="gravity">Gravidade (m/s²):</label>
+                <input type="number" id="gravity" value="9.81">
+            </div>
+            <div class="form-group">
+                <label for="height">Altura (m):</label>
+                <input type="number" id="height">
+            </div>
+        </div>
+        <div id="potentialElasticFields" class="hidden">
+            <div class="form-group">
+                <label for="springConstant">Constante da Mola (N/m):</label>
+                <input type="number" id="springConstant">
+            </div>
+            <div class="form-group">
+                <label for="displacement">Deslocamento da Mola (m):</label>
+                <input type="number" id="displacement">
+            </div>
+        </div>
+        <div class="form-group">
+            <button onclick="calculateEnergies()">Clique para calcular!</button>
+        </div>
+        <div class="results" id="results"></div>
+    </div>
+    <script src="sketch.js"></script>
+</body>
+</html>
